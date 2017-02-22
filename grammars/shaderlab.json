@@ -95,9 +95,51 @@
 			},
 			"patterns": [
 				{
+					"include": "#hlsl-embedded"
+				}
+			]
+		},
+		{
+			"name": "meta.hlslblock",
+			"begin": "\\b(HLSLPROGRAM|HLSLINCLUDE)\\b",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.other"
+				}
+			},
+			"end": "\\b(ENDHLSL)\\b",
+			"endCaptures": {
+				"1": {
+					"name": "keyword.other"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#hlsl-embedded"
+				}
+			]
+		},
+		{
+			"name": "string.quoted.double.shaderlab",
+			"begin": "\"",
+			"end": "\""
+		}
+	],
+	"repository": {
+		"numbers": {
+			"patterns": [
+				{
+					"name": "constant.numeric.shaderlab",
+					"match": "\\b([0-9]+\\.?[0-9]*)\\b"
+				}
+			]
+		},
+		"hlsl-embedded": {
+			"patterns": [
+				{
 					"include": "source.hlsl"
 				},
-        {
+				{
 					"name": "storage.type.basic.shaderlab",
 					"match": "\\b(fixed([1-4](x[1-4])?)?)\\b"
 				},
@@ -152,21 +194,6 @@
 				{
 					"name": "support.class.surface.shaderlab",
 					"match": "\\b(SurfaceOutputStandardSpecular|SurfaceOutputStandard|SurfaceOutput|Input)\\b"
-				}
-			]
-		},
-		{
-			"name": "string.quoted.double.shaderlab",
-			"begin": "\"",
-			"end": "\""
-		}
-	],
-	"repository": {
-		"numbers": {
-			"patterns": [
-				{
-					"name": "constant.numeric.shaderlab",
-					"match": "\\b([0-9]+\\.?[0-9]*)\\b"
 				}
 			]
 		}
